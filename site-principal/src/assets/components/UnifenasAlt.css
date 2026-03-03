@@ -1,0 +1,145 @@
+.inteiro{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.fundo-unifenas-alt {
+  display: flex;
+  max-width: 1232px;
+  padding: 16px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 16px;
+  border-radius: 16px;
+  background: var(--azul-principal);
+  margin-bottom: 40px;
+}
+
+.texto-unifenas-alt {
+  display: flex;
+  padding: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+
+.frame-tag-alt {
+  display: flex;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  background: var(--azul-claro-02);
+}
+
+.tag-sobre-alt {
+  color: var(--azul-claro-03);
+  text-align: center;
+  font-family: var(--font-family);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+  margin: 0;
+}
+
+.titulo-unifenas-page-alt {
+  align-self: stretch;
+  color: #FFF;
+  font-family: var(--font-family);
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%;
+  margin: 0;
+}
+
+.unifenas-bold-alt {
+  color: #FFF;
+  font-family: var(--font-family);
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 120%;
+}
+
+.texto-descricao-page-alt {
+  width: 468px;
+  color: #FFF;
+  font-family: var(--font-family);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%;
+  margin: 0;
+}
+
+.imagem-unifenas-alt {
+  position: relative; 
+  width: 484.467px;
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+.img-unifenas-page-alt {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 484.47 / 428.00;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+  .fundo-unifenas-alt{
+    margin: 16px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; 
+    padding: 16px;
+  }
+
+  .texto-unifenas-alt{
+    align-items: center;
+    padding: 16px;
+    max-width: 256px;
+    gap: 16px;
+    text-align: center;
+  }
+  
+  .frame-tag-alt,
+  .texto-descricao-page-alt {
+    align-self: center;
+  }
+
+  .titulo-unifenas-page-alt{
+    font-size: var(--heading-24-size);
+    font-weight: 600;
+    line-height: 120%;
+    align-self: center;
+  }
+  .unifenas-bold-alt {
+    font-size: var(--heading-24-size);
+  }
+  .texto-descricao-page-alt{
+    font-size: var(--body-14-medium-size);
+    font-weight: 500;
+    line-height: 140%;
+    width: 100%;
+  }
+  
+  .imagem-unifenas-alt {
+    margin-top: 32px;
+    width: 302px;
+  }
+  
+  .img-unifenas-page-alt {
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+  }
+}

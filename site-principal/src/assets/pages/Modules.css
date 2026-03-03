@@ -1,0 +1,79 @@
+.modulos-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0 60px 0;
+}
+.cabecalho{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;  
+  width: 60%;
+  margin-top: 32px;  
+}
+.cabecalho p{
+  color: var(--neutro-500);
+}
+
+.btn-ordenar{
+  background: none;  
+  border: none;
+  border-radius: 4px;
+  color: var(--neutro-400);  
+  cursor: pointer;
+}
+.btn-ordenar svg{
+  margin-right: 8px;
+}
+.cards-grid{  
+  display: grid;   
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1232px;
+  padding: 40px 0 64px 0;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+}
+.paginacao-controls{
+  color: var(--neutro-500);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+.paginacao-controls button{
+  background: none;
+  border: none;
+  color: var(--neutro-500);
+  font-size: 16px;
+  cursor: pointer;
+}
+.paginacao-controls button:hover {
+  opacity: 0.7;
+}
+.paginacao-controls button.active{
+  background: var(--roxo-principal);  
+  border-radius: 4px;
+  color: var(--roxo-claro-03);
+  display: flex;
+  width: 28px;
+  height: 28px;
+  padding: 8px 9px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+@media (max-width: 768px) {
+  .cards-grid{  
+    grid-template-columns: 1fr;    
+    padding: 20px 0 40px 0;
+    gap: 24px;
+  }
+  .cabecalho{
+    width: 60%;        
+    gap: 16px;    
+  }
+}

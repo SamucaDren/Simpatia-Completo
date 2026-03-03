@@ -1,0 +1,87 @@
+.fotos {
+  position: relative;
+  bottom: 0;
+  max-width: 608px;
+  width: 90vw; /* Ajusta a largura com base na largura da tela */
+  height: 565px; /* Manter height fixo ou usar uma unidade relativa, como vw ou % */
+  margin: 0 auto; /* Centraliza o componente */
+}
+
+.fundo {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60%;
+  border-radius: 16px 16px 0 0;
+  background: var(--azul-principal);
+}
+
+.foto1,
+.foto2 {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%; /* Ocupa 80% da largura do contêiner .fotos */
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
+}
+
+.foto1 {
+  background-image: url("/homem.png");
+  opacity: 0;
+}
+
+.foto2 {
+  background-image: url("/mulher.png");
+  opacity: 0;
+}
+.foto1.visible,
+.foto2.visible {
+  opacity: 1;
+}
+
+.menu {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.item-menu {
+  width: 40px;
+  height: 4px;
+  border-radius: 11px;
+  background: #d9d9d9;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.item-menu.active {
+  height: 6px;
+  background: var(--azul-claro-01);
+}
+.eclipse-container {
+  position: absolute;
+  bottom: 170px;
+  right: -10px;
+}
+
+@media screen and (max-width: 768px) {
+  .fotos {
+    width: 320px;
+    height: 298px;
+  }
+
+  .foto1,
+  .foto2 {
+    width: 300px;
+    height: 350px;
+  }
+}

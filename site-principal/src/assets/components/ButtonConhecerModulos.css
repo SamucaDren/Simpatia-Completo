@@ -1,0 +1,60 @@
+.button-conhecer {
+  display: flex;
+  height: 63px;
+  padding: 8px 8px 8px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--roxo-principal);
+  background: var(--gradiente-roxo-escuro);
+
+  color: var(--azul-claro-03);
+}
+.button-conhecer .bg-color {
+  transition: fill 0.3s ease;
+  color: var(--azul-claro-03);
+}
+
+.button-conhecer span {
+  color: var(--azul-claro-03);
+  font-size: var(--heading-18-size);
+  font-weight: var(--heading-18-weight);
+  font-family: var(--font-family);
+  line-height: var(--heading-18-line);
+}
+.button-conhecer:hover {
+  background: var(--gradiente-roxo-medio);
+  cursor: pointer;
+}
+
+.button-conhecer:hover .bg-color {
+  fill: var(--roxo-02);
+}
+
+.button-conhecer .arrow-animation {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.button-conhecer:hover .arrow-animation {
+  animation: arrow-flow 0.5s ease-in-out;
+}
+
+@keyframes arrow-flow {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(30px, -20px) scale(0.8);
+    opacity: 0;
+  }
+  51% {
+    transform: translate(-20px, 30px) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+}

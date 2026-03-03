@@ -1,0 +1,44 @@
+.button-unifenas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 64px;
+  border: 1px solid var(--roxo-principal);
+  border-radius: 8px;
+  min-width: 346px;
+  padding: 16px 24px;
+  background-color: transparent;
+  color: var(--neutro-700);
+  font-family: var(--font-family);
+  font-weight: var(--heading-18-weight);
+  font-size: var(--heading-18-size); 
+  line-height: var(--heading-18-line);
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.button-unifenas svg {
+  width: 20px;
+  height: 20px;
+}
+
+.button-unifenas path {
+  fill: var(--roxo-principal);
+}
+.button-unifenas:hover {
+  background-color: var(--roxo-principal);
+  color: var(--azul-claro-03);
+  border-color: var(--roxo-principal);
+}
+
+.button-unifenas:hover .logo-unifenas path {
+  fill: var(--neutro-100);
+}
+
+@media screen and (max-width: 768px) {
+  .button-unifenas{
+    min-width: 320px;
+  }
+  
+}

@@ -1,0 +1,306 @@
+/* =========================================
+   NAVBAR PRINCIPAL
+========================================= */
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0px;
+  width: 95%;
+  max-width: 1232px;
+
+  transition: all 0.4s ease;
+  z-index: 50;
+}
+
+/* Navbar no modo fixo (após scroll) */
+.navbar-scrolled {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 100vw;
+  max-width: 1312px;
+  padding: 16px 24px;
+  padding: 16px 24px;
+
+  background: rgba(255, 255, 255, 0.6);  
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+
+  animation: slideDown 0.4s ease forwards;
+  z-index: 100;
+}
+
+/* Animação de entrada da navbar fixa */
+@keyframes slideDown {
+  from {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+/* =========================================
+   LOGO
+========================================= */
+.logo {
+  height: 36px;
+  transition: all 0.3s ease;
+}
+
+.navbar-scrolled .logo {
+  height: 30px;
+  /* levemente menor no modo fixo */
+}
+
+/* =========================================
+   CABEÇALHO DA NAVBAR (logo + menu hambúrguer)
+========================================= */
+.navbar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* =========================================
+   LINKS CENTRAIS E DROPDOWN
+========================================= */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.links-centrais {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+}
+
+.nav-links hr {
+  display: none;
+}
+
+/* Links padrão */
+a {
+  text-decoration: none;
+  color: var(--neutro-400, #5c5c5c);
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+a:hover {
+  color: var(--azul-principal);
+}
+
+/* Estilo do link principal no modo fixo */
+.navbar-scrolled a {
+  color: var(--neutro-800, #3a3a3a);
+  font-weight: 500;
+}
+
+/* =========================================
+   MENU HAMBÚRGUER (somente mobile)
+========================================= */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 0.4rem;
+}
+
+.hamburger-menu span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--azul-principal);
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+/* =========================================
+   DROPDOWN (Módulos de IA)
+========================================= */
+.nav-item-dropdown {
+  position: relative;
+}
+
+.dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.dropdown-trigger:hover {
+  color: var(--azul-principal);
+}
+
+/* Ícone da seta */
+.arrow-icon {
+  margin-left: 6px;
+  transition: transform 0.3s ease;
+}
+
+.arrow-icon.rotated {
+  transform: rotate(180deg);
+}
+
+/* Submenu animado */
+.submenu-links {
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 160px;
+
+  background-color: var(--neutro-000);
+  border-radius: 0 0 6px 6px;
+
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: all 0.4s ease;
+  z-index: 100;
+}
+
+.submenu-links.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* =========================================
+   VERSÃO MOBILE
+========================================= */
+@media (max-width: 768px) {
+
+  /* Layout principal */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: none;
+
+    width: 100%;
+    max-width: none;
+    padding: 16px;
+    background-color: var(--neutro-000);
+    z-index: 100;
+  }
+
+  .navbar-scrolled {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 95vw;
+    max-width: 1312px;
+    padding: 16px 24px;
+    padding: 16px 24px;
+
+    background: rgba(255, 255, 255, 0.6);    
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+
+    animation: slideDown 0.4s ease forwards;
+    z-index: 100;
+  }
+
+  /* Cabeçalho */
+  .navbar-header {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  /* Exibe o botão hambúrguer */
+  .hamburger-menu {
+    display: flex;
+  }
+
+  /* Oculta os links por padrão */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    background-color: var(--neutro-000);
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+
+    max-height: 0;
+    transition: max-height 0.3s ease-out;
+    position: absolute;
+    top: 64px;
+    padding: 24px;
+    left: 0;
+    z-index: 99;
+  }
+
+  /* Abre o menu */
+  .nav-links.open {
+    display: flex;
+    max-height: 480px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Ajustes visuais */
+  .links-centrais {
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+
+  .nav-item-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .nav-item {
+    width: 100%;
+  }
+
+  .nav-links.open hr {
+    display: block;
+    width: 100%;
+    border: none;
+    border-top: 1px dashed var(--azul-claro-03);
+  }
+
+  .logo {
+    height: 28px;
+  }
+
+  /* Submenu no mobile (abre como bloco) */
+  .submenu-links {
+    display: none;
+  }
+
+  .submenu-links.open {
+    display: block;
+    position: static;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    background: none;
+  }
+}

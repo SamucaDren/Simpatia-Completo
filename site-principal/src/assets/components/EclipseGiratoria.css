@@ -1,0 +1,85 @@
+.eclipse {
+  width: 179px;
+  height: 179px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 50%; /* Para garantir que o container também seja circular */
+  overflow: hidden; /* Garante que nada saia do círculo principal */
+}
+
+.container-baixo {
+  background-color: var(--azul-01);
+  border-radius: 100%;
+  position: absolute;
+  width: 179px;
+  height: 179px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-container {
+  background-color: var(--azul-claro-03);
+  border-radius: 100%;
+  width: 115px;
+  height: 115px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.texto-circular-svg {
+  position: absolute;
+  z-index: 1;
+  width: 188px;
+  letter-spacing: 2px;
+  animation: girarSvg 15s linear infinite;
+  transform-origin: center;
+}
+
+.texto-circular-svg textPath {
+  fill: white;
+  font-size: 9px;
+}
+
+@keyframes girarSvg {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .eclipse {
+    width: 94px;
+    height: 94px;
+  }
+
+  .container-baixo {
+    width: 94px;
+    height: 94px;
+  }
+
+  .logo-container {
+    width: 65px;
+    height: 65px;
+  }
+
+  .texto-circular-svg {
+    width: 100px;
+  }
+
+  .texto-circular-svg textPath {
+    font-size: 10px;
+  }
+  .logo-container img {
+    width: 39px;
+    height: 39px;
+  }
+}

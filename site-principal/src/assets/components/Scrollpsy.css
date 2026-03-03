@@ -1,0 +1,129 @@
+.scrollspy-container{
+  display: flex;
+  gap: 5vw;
+  margin-top: 64px;
+}
+
+.scrollpsy-sidebar {
+  display: flex;
+  padding: 32px 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  flex: 1 0 0;
+}
+.sidebar-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.sidebar-button{
+  color: var(--neutro-300);
+  border: none;
+  background: none;
+  font-size: var(--body-18-medium-size);
+  font-weight: var(--body-18-medium-weight);
+  line-height: var(--body-18-medium-line);
+}
+.sidebar-button-active{
+  color: var(--neutro-500);
+  font-size: var(--heading-18-size);
+  font-weight: var(--heading-18-weight);
+  line-height: var(--heading-18-height);
+}
+.sidebar-item svg{
+  margin-right: 16px; 
+
+}
+
+.scrollspy-content {
+  display: flex;
+  width: 920px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 64px;
+}
+.section-title{
+  color: var(--azul-escuro-02);
+  font-size: var(--heading-40-size);
+  font-weight: var(--heading-40-weight);
+  line-height: var(--heading-40-height)
+}
+
+.section-gallery{
+  max-width: 600px;
+
+  
+}
+.gallery-image{
+  width: 100%;
+  border-radius: 8px;
+}
+.section-links{
+  border-radius: 8px;
+  border: 1px solid var(--Variaes-de-Azul-Azul-Claro-03, #DBE9FC);
+  background: var(--Cores-Neutras-100, #F8F8FC);
+  min-width: 60vw;
+  padding: 24px;
+}
+.section-links .wrapper-titulo{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.title-links{
+  color: var(--azul-principal);
+  font-size: var(--heading-24-size);
+  font-weight: var(--heading-24-weight);
+}
+
+.section-links ul{
+  list-style: none;
+  padding: 16px;
+  margin: 0;
+}
+.section-links a{
+  color: var(--neutro-500);  
+  font-size: var(--heading-18-size);
+  font-weight: var(--heading-18-weight);
+  line-height: var(--heading-18-height);
+}
+
+@media (max-width: 768px) {
+  .scrollspy-container{
+    flex-direction: column;
+    margin-top: 64px;
+    width: 80vw;
+  }
+  .scrollpsy-sidebar {
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 0;    
+  }
+  .sidebar-list{
+    flex-direction: row;
+    gap: 0;
+  }
+  .scrollspy-content {
+    width: 100%;
+    gap: 32px;
+  }
+  .section-gallery{
+    max-width: 100%;
+  }
+  .links-section{
+    width: 100%;    
+  }
+
+  .sidebar-button{
+    font-size: var(--body-14-semi-size);    
+  }
+  .section-links a{
+    font-size: var(--body-14-semi-size); 
+  }
+}
