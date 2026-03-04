@@ -1,0 +1,29 @@
+.btn {
+    all: unset !important;
+    border-bottom: 2px solid #006FFF !important;
+    color: #7A7A99 !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 1.6 !important;
+    height: 44px !important;
+    width: 100% !important;
+}
+
+.menu-content:hover {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.menu-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.menu-content::-webkit-scrollbar-thumb {
+  background: #e4e4f2;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.menu-content::-webkit-scrollbar-track {
+  background: transparent;
+}

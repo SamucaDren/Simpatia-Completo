@@ -1,0 +1,379 @@
+.chatContainer {
+  display: flex;
+  height: calc(100dvh - 112px);
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.chatHeader {
+  padding: 18px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.chatHeaderTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: auto;
+  box-sizing: border-box;
+}
+
+.chatHeader p {
+  margin: 0;
+  font-size: 12px;
+  color: #666;
+}
+
+.messages {
+  flex: 1;
+  padding: 16px 16px 40px 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 12px;
+  max-height: 100%;
+  width: 100%;
+}
+
+.messages::-webkit-scrollbar {
+  width: 4px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background: #e4e4f2;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.message {
+  max-width: 70%;
+  min-width: 70px;
+  margin-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  word-break: break-word;
+  font-size: 14px;
+}
+
+.message small {
+  font-size: 10px;
+  position: absolute;
+  bottom: -14px;
+  right: 6px;
+  color: #666;
+}
+
+.messageuser {
+  margin-left: auto;
+  border-radius: 8px 8px 0px 8px;
+  padding: 8px 12px;
+}
+
+.messagebot {
+  margin-right: auto;
+  border-radius: 8px 8px 8px 0px;
+  padding: 8px 16px 24px 16px;
+}
+
+.inputArea {
+  height: auto;
+  width: 100%;
+  display: flex;
+  padding: 12px 10% 25px 12%;
+  background: #fefeff;
+  align-items: end;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.inputArea::after {
+  content: "";
+  position: absolute;
+  top: -35px;
+  left: 0;
+  width: 100%;
+  height: 35px;
+  background: linear-gradient(to top, #fefeff, rgba(254, 254, 255, 0));
+}
+
+textarea::-webkit-scrollbar {
+  width: 4px;
+  cursor: pointer;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: #e4e4f2;
+  border-radius: 4px;
+}
+
+textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.inputArea button {
+  margin-left: 8px;
+  border: none;
+  background: #006fff;
+  color: #fff;
+  border-radius: 6px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.inputArea button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+.emptyChat {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #666;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+.spinTop {
+  animation: spinTop 1s linear infinite reverse;
+}
+
+.buttonTop {
+  all: unset;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background-color: #006fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.markdownContainer {
+  max-width: 100%;
+  font-size: 14px !important;
+}
+
+.markdownContainer p,
+.markdownContainer ul,
+.markdownContainer ol,
+.markdownContainer h1,
+.markdownContainer h2,
+.markdownContainer h3,
+.markdownContainer pre {
+  margin-bottom: 1em;
+}
+
+.markdownContainer *:last-child {
+  margin-bottom: 0;
+}
+
+.markdownContainer pre {
+  background-color: #2d2d2d;
+  color: #f8f8f2;
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+  font-family: 'Courier New', Courier, monospace;
+  white-space: pre;
+  max-width: 100%;
+}
+
+.markdownContainer pre::-webkit-scrollbar {
+  height: 6px; 
+  background-color: transparent;
+}
+
+.markdownContainer pre::-webkit-scrollbar-thumb {
+  background-color: #e4e4f2;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.markdownContainer pre code {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+  font-size: 14px !important;
+}
+
+.message .markdownContainer pre code {
+  font-size: 12px !important;
+}
+
+.copyButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: -14px;
+  left: 12px;
+  padding: 4px;
+  transition: 0.1 ease;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  height: 25px;
+  width: 25px;
+  min-width: 25px;
+  min-height: 25px;
+}
+
+
+.copyButton:hover {
+  background-color: #f8f8f2;
+  border-radius: 100%;
+  transform: scale(1.05);
+}
+
+.copiedMsg {
+  position: absolute;
+  bottom: -18px;
+  left: 40px;
+  font-size: 12px;
+  color: #4caf50;
+}
+
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinTop {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+
+  .message .markdownContainer pre code {
+    font-size: 10px !important;
+  }
+
+  .chatContainer {
+    margin-left: 68px;
+    height: calc(100dvh - 80px);
+  }
+
+  .chatHeaderTitle strong {
+    font-size: 14px;
+  }
+
+  .chatHeader {
+    padding: 10px 18px;
+  }
+
+  .chatHeader p {
+    font-size: 11px;
+  }
+
+  .message small {
+    font-size: 8px;
+  }
+
+  .message {
+    font-size: 14px;
+    max-width: 82%;
+  }
+
+  .inputArea {
+    flex-direction: row;
+    padding: 8px 8px 30px 8px;
+  }
+
+  .inputArea button {
+    width: 40px;
+    border-radius: 100%;
+  }
+}
+
+.loadingContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.typingIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.typingIndicator span {
+  width: 8px;
+  height: 8px;
+  background: #4a90e2;
+  border-radius: 50%;
+  display: inline-block;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.typingIndicator span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.typingIndicator span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+.typingIndicator span:nth-child(3) {
+  animation-delay: 0s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+.loadingText {
+  font-size: 0.85rem;
+  color: #777;
+  font-style: italic;
+}

@@ -1,0 +1,111 @@
+.topbar {
+  display: flex;
+  width: 100%;
+  height: 64px;
+  background: #FEFEFF;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 16px;
+  box-sizing: border-box;
+  gap: 12px;
+}
+
+.logo {
+  height: 36px;
+  cursor: pointer;
+}
+
+.nav {
+  display: flex;
+  gap: 56px;
+  align-items: center;
+  justify-content: center;
+}
+
+.navInt {
+  display: flex;
+  gap: 56px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+@media (max-width: 768px) {
+
+  .topbar {
+    flex-direction: row;
+    height: auto;
+    padding-left: 8px;
+    padding-right: 8px;
+    justify-content: space-between;
+    gap: 8px;
+    position: relative;
+    background: #FEFEFF;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .logo {
+    height: 27.56px;
+  }
+
+  .mobileMenu {
+    position: relative;
+  }
+
+  .hamburger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    color: #006FFF;
+    font-weight: 800;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #006FFF;
+    border-radius: 2px;
+  }
+
+  .dropdown {
+    position: absolute;
+    box-sizing: border-box;
+    right: 0;
+    left: -16px;
+    width: 100vw;
+    top: 42px;
+    background: #FEFEFF;
+    border-radius: 0px 0px 16px 16px;
+    box-shadow: 0px 14px 10px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    z-index: 1100;
+  }
+
+  .btn {
+    height: 64px !important;
+  }
+
+  .btnTop {
+    all: unset !important;
+    border-bottom: 2px solid #006FFF !important;
+    color: #7A7A99 !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 1.6 !important;
+    height: 44px !important;
+
+  }
+}

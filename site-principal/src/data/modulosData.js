@@ -28,7 +28,7 @@ const MODULOS_DATA = {
     {
       titulo: "Ajuda AI",
       descricao: "Crie e acompanhe provas e notas.",
-      link: "https://simpatia-atex.web.app/",
+      link: "/ajuda-ai",
       id: "a1",
     },
     {

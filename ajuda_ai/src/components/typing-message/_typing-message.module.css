@@ -1,0 +1,71 @@
+.typingContainer p:last-child::after {
+  content: '▋';
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.markdownContainer {
+  max-width: 100%;
+  font-size: 14px !important;
+}
+
+.markdownContainer p,
+.markdownContainer ul,
+.markdownContainer ol,
+.markdownContainer h1,
+.markdownContainer h2,
+.markdownContainer h3,
+.markdownContainer pre {
+  margin-bottom: 1em;
+}
+
+.markdownContainer *:last-child {
+  margin-bottom: 0;
+}
+
+.markdownContainer pre {
+  background-color: #2d2d2d;
+  color: #f8f8f2;
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+  font-family: 'Courier New', Courier, monospace;
+  white-space: pre;
+  max-width: 100%;
+}
+
+
+.markdownContainer pre::-webkit-scrollbar {
+  height: 6px; 
+  background-color: transparent;
+}
+
+.markdownContainer pre::-webkit-scrollbar-thumb {
+  background-color: #e4e4f2;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.markdownContainer pre code {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+  font-size: 14px !important;
+}
+
+/* Aumentando a especificidade */
+.markdownContainer pre code {
+  font-size: 12px !important;
+}
+
+@media (max-width: 768px) {
+
+ .markdownContainer pre code {
+    font-size: 10px !important;
+  }
+}
