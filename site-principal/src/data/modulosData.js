@@ -9,7 +9,7 @@ const MODULOS_DATA = {
     {
       titulo: "Gerador de Questões Descritivas",
       descricao: "Crie e corrija questões descritivas",
-      link: "https://unifenas.br",
+      link: "/gerador-de-questoes-descritivas",
       id: "p2",
     },
     {
@@ -34,6 +34,7 @@ const MODULOS_DATA = {
     {
       titulo: "Simpático IA",
       descricao: "Treine argumentação para debates",
+      link: "/simpatico",
       id: "a2",
     },
     {
