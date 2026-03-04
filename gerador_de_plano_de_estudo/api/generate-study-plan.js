@@ -1,8 +1,9 @@
 // api/generate-study-plan.js
 import OpenAI from "openai";
+import { OPENAI_API_KEY } from "../config.js";
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: OPENAI_API_KEY,
 });
 
 export default async function handler(req, res) {
@@ -12,7 +13,14 @@ export default async function handler(req, res) {
 
   try {
     // no Vercel, precisa usar await req.json()
-    const { discipline, dailyHours, knowledgeLevel, studyGoal, daysAvailable, totalHoursAvailable } = await req.json();
+    const {
+      discipline,
+      dailyHours,
+      knowledgeLevel,
+      studyGoal,
+      daysAvailable,
+      totalHoursAvailable,
+    } = await req.json();
 
     const prompt = `
       Monte um plano de estudo detalhado para a disciplina "${discipline}".

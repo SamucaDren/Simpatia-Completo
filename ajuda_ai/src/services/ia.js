@@ -2,6 +2,7 @@ import axios from "axios";
 import { GEMINI_API_KEY } from "../config.js";
 
 export async function ChatMensagem(pergunta, specialties) {
+  console.log("Chave:", GEMINI_API_KEY); // ← adicione isso
   try {
     const data = `${JSON.stringify(
       pergunta,
@@ -36,7 +37,11 @@ export async function ChatMensagem(pergunta, specialties) {
 
     return respostaTexto;
   } catch (erro) {
-    console.error("Erro ao consultar Gemini:", erro);
+    console.error(
+      "Erro ao consultar Gemini:",
+      erro.message,
+      erro.response?.data,
+    );
     return "Houve um erro ao consultar a IA. Tente novamente em instantes.";
   }
 }
