@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>SIMPATIA - Sistema de Mídias Pedagógicas com IA</title>
+
+    <!-- Google tag -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S703Y659N7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-S703Y659N7');
+    </script>
+</head>
+
+<body>
+    <!-- popup de notificação -->
+    <div id="notificacao-popup"></div>
+    <header>
+        <a href="index.html" class="logo-link">
+            <img src="./img/logo-simpatia.svg" alt="SIMPAT - Página Inicial" class="logo">
+        </a>
+        <div class="nav-dropdown">
+            <button class="dropdown-btn">
+                Links Úteis
+                <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                    <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+
+            <!-- Container para melhor controle do hover -->
+            <div class="dropdown-container">
+                <div class="dropdown-menu">
+                    <h2>Correção De Questões Descritivas</h2>
+                    <a href="index.html" class="dropdown-item">
+                        <span class="item-text">Página Inicial</span>
+                    </a>
+
+                    <a href="https://chat.openai.com/" target="_blank" class="dropdown-item">
+                        <span class="item-text">Acessar ChatGPT</span>
+                    </a>
+
+                    <a href="comoUsar.html" class="dropdown-item">
+                        <span class="item-text">Como usar</span>
+                    </a>
+
+                    <a href="creditos.html" class="dropdown-item">
+                        <span class="item-text">Créditos</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="modulo-correcao-badge">
+            <h4 class="badge"> <img src="./img/book-open.png" alt="Ícone Módulo Correção" class="icone-modulo-correcao">
+                Módulo para Correção de Questões</h4>
+        </div>
+        <h1 class="titulo">Correção de Questões Descritivas</h1>
+        <p class="subtitulo">Utilize inteligência artificial para analisar e avaliar respostas de forma precisa,
+            objetiva e construtiva.</p>
+
+        <div class="grid-colunas">
+            <section class="container question-container">
+                <h2 class="section-title"> <img src="./img/icone-questoes.png" alt="Ícone Questões e Respostas"
+                        class="icone-questoes">Questões / Respostas</h2>
+                <p class="section-subtitle">Insira os dados da questão para correção</p>
+
+                <form id="questionForm" class="question-form">
+
+                    <div class="form-group">
+                        <div class="topic">
+                            <span class="dot blue"></span>
+                            <label for="pergunta">Questão</label>
+                        </div>
+                        <textarea id="pergunta" rows="6" name="pergunta" required
+                            placeholder="Digite ou cole o enunciado da questão aqui..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="topic">
+                            <span class="dot purple"></span>
+                            <label for="respostaAluno">Resposta do Aluno</label>
+                        </div>
+                        <textarea id="respostaAluno" rows="6" name="respostaAluno" required
+                            placeholder="Digite a resposta fornecida pelo aluno..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="topic">
+                            <span class="dot blue"></span>
+                            <label for="gabarito">Gabarito / Palavras-chaves esperadas</label>
+                        </div>
+                        <textarea id="gabarito" rows="6" name="gabarito"
+                            placeholder="Digite o gabarito esperado aqui..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="questaoImg" class="uploadArquivo">
+                            <div class="upload-icon">
+                                <img src="./img/upload.png" alt="Ícone Upload de Arquivo"
+                                    class="icone-upload">
+                            </div>
+
+                            <div class="upload-content">
+                                <h3>Enviar Imagem da Questão</h3>
+                                <p class="upload-subtitle">PNG, JPG ou WEBP • Até 10MB</p>
+
+                                <div class="upload-action">
+                                    <span class="upload-btn">Clique para escolher arquivo</span>
+                                </div>
+                            </div>
+
+                            <input id="questaoImg" class="questaoImg" type="file" accept=".jpg,.jpeg,.png,.webp">
+                        </label>
+
+                        <div class="file-preview" id="filePreview"></div>
+                    </div>
+
+                    <button type="button" id="gerarPrompt" class="btn btn-primary">Gerar Prompt</button>
+                </form>
+
+            </section>
+
+            <section class="container chat-container">
+                <h2 class="section-title"><img src="./img/sparkles.png" alt="Ícone Chat Corretor"
+                        class="icone-corretor">Chat Corretor (IA)</h2>
+                <p class="section-subtitle">Assistente inteligente de correção</p>
+
+                <div class="form-group">
+                    <div class="topic">
+                        <span class="dot blue"></span>
+                        <label for="inputQuestion">Cole o prompt gerado</label>
+                    </div>
+                    <textarea id="inputQuestion" rows="6" placeholder="Cole aqui o prompt gerado"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <div class="topic">
+                        <span class="dot purple"></span>
+                        <label for="result">Resposta da IA</label>
+                    </div>
+                    <textarea id="result" rows="8" disabled placeholder="A resposta da IA aparecerá aqui..."></textarea>
+                </div>
+
+                <button id="submitQuestion" class="btn btn-primary">
+                    <span class="btn-icon"></span> Enviar Pergunta
+                </button>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer-container">
+        <div class="footer-content">
+            <!-- Divisão Esquerda -->
+            <div class="footer-left">
+                <img src="./img/logo-simpatia.svg" alt="Logo Simpatia" class="footer-logo-simpatia" />
+                <div class="footer-text-box">
+                    <p class="footer-text-description">
+                        O SIMPATIA foi desenvolvido por alunos da Unifenas a fim de auxiliar discentes e docentes com
+                        ferramentas de Inteligência Artificial.
+                    </p>
+                </div>
+                <button class="button-conhecer-modulos">
+                    Quero conhecer os módulos! <span class="icone"><img src="./img/flexa.svg"></span>
+                </button>
+            </div>
+
+            <!-- Divisão Meio/Direita -->
+            <div class="footer-right">
+                <!-- Divisão de cima -->
+                <div class="footer-right-top">
+                    <!-- Coluna 1 (links) -->
+                    <div class="footer-column">
+                        <h3>Para Professores</h3>
+                        <ul>
+                            <li><a href="/">Gerador de Plano de Aulas</a></li>
+                            <li><a href="/">Corretor de Questões Descritivas</a></li>
+                        </ul>
+                    </div>
+                    <!-- Coluna 2 (links) -->
+                    <div class="footer-column">
+                        <h3>Para Alunos</h3>
+                        <ul>
+                            <li><a href="/">Simpático</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Divisão de baixo -->
+                <div class="footer-right-bottom">
+                    <a href="/" class="footer-text-know-more">
+                        Conheça mais sobre o projeto
+                    </a>
+                    <a href="https://unifenas.br/" target="_blank" class="button-unifenas">
+                        <svg class="logo-unifenas" width="30" height="30" viewBox="0 0 75 78" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M58.4275 58.3494C58.2998 58.1508 58.2857 57.5871 58.0233 57.1758C54.0808 51.0351 50.2819 44.7739 46.0203 38.8495L46.0185 52.1449C46.0185 55.8405 43.3346 59.1896 41.9448 60.8347C32.5317 71.9922 12.812 67.0569 10.2381 52.4675L10.2168 23.7886L10.9294 22.7285L19.7824 17.9315V50.7267C19.7824 50.8685 20.5198 53.056 20.6687 53.3858C23.4519 59.6151 32.7125 58.789 35.524 52.9922C37.3393 49.2447 36.4388 26.1936 36.4494 20.7408C37.6123 24.0912 43.9356 34.1554 46.0203 37.4278L46.022 21.4499C50.5425 29.693 57.1688 39.0103 62.331 47.3314C63.5896 49.363 65.334 52.0775 66.5891 54.0948C69.3545 58.5444 71.9639 63.125 74.7435 67.5675H64.6391C63.6995 66.3088 62.838 64.9793 61.98 63.6675C60.8206 61.8948 59.5727 60.115 58.4346 58.3494H58.4275Z"
+                                fill="#370199" />
+                            <path
+                                d="M42.3678 5.67268C40.9922 5.1125 38.4492 5.03675 36.985 5.17502C6.88433 8.01136 -6.52092 43.5294 14.4644 65.2664L13.5958 65.4189C8.67477 60.5545 4.28908 55.3109 2.04482 48.6136C-9.84653 13.1416 32.8014 -15.3849 60.913 9.24162C64.3627 12.2623 67.9614 16.7792 69.415 21.1223C63.4764 13.5351 55.8395 7.35545 46.0187 5.87701C46.0187 5.87701 46.0435 4.4553 46.0187 3.74976C46.0187 3.74976 43.6016 5.02741 42.3678 5.67268Z"
+                                fill="#370199" />
+                            <path
+                                d="M61.973 63.6675C49.1775 80.0757 24.98 82.983 8.97952 69.3295C7.95134 68.4538 3.02675 63.6462 2.77148 62.7741C2.62612 62.2742 2.80693 62.1465 3.29266 62.2529C17.8856 79.4553 45.9441 76.6579 58.4276 58.3494C59.5656 60.115 60.8136 61.8948 61.973 63.6675Z"
+                                fill="#370199" />
+                            <path
+                                d="M46.0186 7.29517C62.8877 14.3116 72.2582 31.2055 68.4682 49.4219C68.1597 50.9039 67.8229 53.1659 66.582 54.0948C65.3269 52.0774 63.9407 50.0991 62.682 48.0676C63.306 47.713 63.267 47.0748 63.4053 46.4863C65.1248 39.1331 64.3484 31.3367 61.3242 24.4267C58.3424 17.6159 52.8967 11.0781 46.0186 8.00071C46.0186 7.76317 46.0221 7.52917 46.0186 7.29163V7.29517Z"
+                                fill="#370199" />
+                            <path
+                                d="M36.4287 8.59635L46.0167 3.74976L46.0183 15.8077C46.0183 15.8077 37.4213 20.9841 36.4428 21.4769C36.4605 17.1869 36.4429 12.8863 36.4287 8.59635Z"
+                                fill="#370199" />
+                            <path d="M36.5176 21.2726H46.4448V21.6271H36.5176V21.2726Z" fill="#370199" />
+                        </svg>
+                        Conheça a Unifenas
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <div class="footer-final-division">
+            <span class="atex-info">ATEX - © 2025 SIMPATIA</span>
+            <span class="system-info">-</span>
+            <span class="system-info">Sistema de Mídias Pedagógicas para Atividades com Inteligência Artificial</span>
+        </div>
+    </footer>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "@google/generative-ai": "https://esm.run/@google/generative-ai"
+            }
+        }
+    </script>
+
+    <script src="gerarPrompt.js"></script>
+    <script src="correcao.js" type="module"></script>
+    <script src="enviarImg.js"></script>
+</body>
+
+</html>

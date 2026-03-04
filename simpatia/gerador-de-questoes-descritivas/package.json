@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
+    "jspdf": "^2.5.1",
+    "multer": "^2.0.2",
+    "openai": "^4.38.3"
+  }
+}
