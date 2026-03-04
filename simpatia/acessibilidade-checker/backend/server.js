@@ -127,6 +127,10 @@ app.post("/analyze", async (req, res) => {
       geminiData.candidates?.[0]?.content?.parts?.[0]?.text,
     );
 
+    console.log("=== RESPOSTA COMPLETA DO GEMINI ===");
+    console.log(JSON.stringify(geminiData, null, 2));
+    console.log("=== FIM DA RESPOSTA ===");
+
     const analysisText = geminiData.candidates[0].content.parts[0].text;
   } catch (error) {
     if (browser) await browser.close();
