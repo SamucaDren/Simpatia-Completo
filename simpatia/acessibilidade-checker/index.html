@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acessibilidade Checker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Acessibilidade Checker</h1>
+        </header>
+
+        <main>
+                        <form id="siteForm">
+                <label for="url">Digite a URL para analisar:</label>
+                <input type="url" id="url" placeholder="https://exemplo.com" required>
+                <button type="submit">Verificar</button>
+            </form>
+            <div id="resultado-container">
+                            <section id="analysis-text-section"></section>
+                <section id="screenshot-section"></section>
+            </div>
+        </main>
+    </div>
+        <script type="module" src="script.js"></script>
+</body>
+</html>
