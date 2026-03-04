@@ -1,3 +1,5 @@
+// API Key não é mais necessária aqui (fica segura na Netlify Function)
+
 document
   .getElementById("siteForm")
   .addEventListener("submit", async function (e) {
@@ -15,60 +17,65 @@ document
     screenshotSection.innerHTML = "";
 
     try {
-      const response = await fetch("/analyze", {
+      // 1. Capturar screenshot usando html2canvas
+      console.log("1. Capturando screenshot da URL...");
+      const canvas = await html2canvas(document.querySelector("iframe") || document.body, {
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: "#ffffff",
+      });
+      const screenshotBase64 = canvas.toDataURL("image/jpeg", 0.8).split(",")[1];
+
+      // 2. Rodar análise de acessibilidade com axe-core
+      console.log("2. Rodando análise de acessibilidade...");
+      let axeResults = { violations: [] };
+      try {
+        axeResults = await axe.run();
+      } catch (err) {
+        console.warn("Axe-core não conseguiu analisar URL externa (CORS):", err);
+        // Se a URL for externa, vamos tentar sem axe-core
+      }
+
+      // 3. Chamar Netlify Function (API key fica segura no servidor)
+      console.log("3. Enviando para Netlify Function...");
+
+      const violacoes = axeResults.violations
+        .map(
+          (v) =>
+            `- ${v.id}: ${v.description} (${v.impact}) - ${v.nodes.length} elementos`
+        )
+        .join("\n");
+
+      // 4. Chamar API da função
+      const functionResponse = await fetch("/.netlify/functions/analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url }),
+        body: JSON.stringify({
+          screenshotBase64,
+          url,
+          violacoes:
+            violacoes ||
+            "Nenhuma detectada por axe-core (URL externa ou CORS bloqueado)",
+        }),
       });
 
-      // Correção: lê como texto primeiro para debugar antes de tentar parse
-      const rawText = await response.text();
-      console.log("Resposta bruta do backend:", rawText);
-
-      if (!rawText || rawText.trim() === "") {
-        throw new Error("O backend retornou uma resposta vazia.");
-      }
-
-      let data;
-      try {
-        data = JSON.parse(rawText);
-      } catch (parseErr) {
+      if (!functionResponse.ok) {
+        const errorData = await functionResponse.json();
         throw new Error(
-          `Resposta inválida do backend: ${rawText.substring(0, 200)}`,
+          `Erro: ${errorData.error || "Erro ao chamar a função de análise"}`
         );
       }
 
-      if (!response.ok) {
-        throw new Error(data.error || "Erro na requisição.");
-      }
+      const reportData = await functionResponse.json();
 
-      // Correção: limpa markdown que o Gemini às vezes envolve no JSON
-      let analysisText = data.analysis.trim();
-      analysisText = analysisText
-        .replace(/^```json\s*/i, "")
-        .replace(/^```\s*/i, "")
-        .replace(/\s*```$/i, "")
-        .trim();
-
-      console.log("Texto da análise limpo:", analysisText);
-
-      let reportData;
-      try {
-        reportData = JSON.parse(analysisText);
-      } catch (jsonErr) {
-        throw new Error(
-          `O Gemini retornou um JSON inválido: ${analysisText.substring(0, 200)}`,
-        );
-      }
-
+      // 6. Exibir resultados
       analysisTextSection.innerHTML = createReportHTML(reportData);
-
       screenshotSection.innerHTML = `
-            <h3>Screenshot da Página:</h3>
-            <img src="${data.screenshot_url}" alt="Screenshot de ${url}" style="max-width:100%; border-radius:8px;">
-        `;
+        <h3>Screenshot da Página:</h3>
+        <img src="data:image/jpeg;base64,${screenshotBase64}" alt="Screenshot de ${url}" style="max-width:100%; border-radius:8px;">
+      `;
     } catch (err) {
-      console.error("Erro no front-end:", err);
+      console.error("Erro:", err);
       analysisTextSection.innerHTML = `<p style="color:red;">Ocorreu um erro na análise: ${err.message}</p>`;
       screenshotSection.innerHTML = "";
     }

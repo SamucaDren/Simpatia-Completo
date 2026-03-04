@@ -1,0 +1,39 @@
+[build]
+  command = "echo 'Deploy realizado com sucesso'"
+  functions = "simpatia/netlify/functions"
+  publish = "simpatia"
+
+[[redirects]]
+  from = "/acessibilidade-checker/*"
+  to = "/acessibilidade-checker/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/simpatico/*"
+  to = "/simpatico/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/gerador-de-plano/*"
+  to = "/gerador-de-plano/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/gerador-de-questoes-descritivas/*"
+  to = "/gerador-de-questoes-descritivas/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/ajuda-ai/*"
+  to = "/ajuda-ai/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/oratoria-ai/*"
+  to = "/oratoria-ai/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
