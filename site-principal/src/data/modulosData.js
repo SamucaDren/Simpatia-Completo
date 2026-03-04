@@ -28,13 +28,13 @@ const MODULOS_DATA = {
     {
       titulo: "Ajuda AI",
       descricao: "Crie e acompanhe provas e notas.",
-      link: "/ajuda-ai",
+      link: "/simpatico",
       id: "a1",
     },
     {
-      titulo: "Simpático IA",
+      titulo: "Oratória AI",
       descricao: "Treine argumentação para debates",
-      link: "/simpatico",
+      link: "/oratoria-ai",
       id: "a2",
     },
     {
