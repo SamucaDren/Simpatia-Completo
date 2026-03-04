@@ -13,7 +13,6 @@ const app = express();
 const port = 3000;
 
 app.use(cors());
-// Correção: aumenta o limite para suportar respostas grandes
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
@@ -24,7 +23,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/analyze", async (req, res) => {
-  console.log("Requisição recebida:", req.body);
+  console.log("1. Requisição recebida:", req.body);
   const { url } = req.body;
 
   if (!url) {
@@ -35,6 +34,7 @@ app.post("/analyze", async (req, res) => {
   try {
     const geminiApiKey = GEMINI_API_KEY;
 
+    console.log("2. Iniciando Puppeteer...");
     browser = await puppeteer.launch({
       headless: true,
       args: [
@@ -44,11 +44,12 @@ app.post("/analyze", async (req, res) => {
       ],
     });
 
+    console.log("3. Puppeteer iniciado, abrindo página...");
     const page = await browser.newPage();
     await page.setViewport({ width: 1280, height: 800 });
     await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
 
-    // Correção: JPEG com quality 60 — muito menor que PNG, suficiente para análise visual
+    console.log("4. Página carregada, tirando screenshot...");
     const imageBuffer = await page.screenshot({
       fullPage: true,
       type: "jpeg",
@@ -57,6 +58,11 @@ app.post("/analyze", async (req, res) => {
     const base64Image = imageBuffer.toString("base64");
     const mimeType = "image/jpeg";
 
+    console.log(
+      "5. Screenshot feito, tamanho base64:",
+      base64Image.length,
+      "chars",
+    );
     await browser.close();
     browser = null;
 
@@ -92,6 +98,7 @@ app.post("/analyze", async (req, res) => {
             }
         `;
 
+    console.log("6. Chamando Gemini...");
     const geminiResponse = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${geminiApiKey}`,
       {
@@ -110,7 +117,9 @@ app.post("/analyze", async (req, res) => {
       },
     );
 
+    console.log("7. Resposta do Gemini, status:", geminiResponse.status);
     const geminiData = await geminiResponse.json();
+    console.log("8. Gemini data:", JSON.stringify(geminiData, null, 2));
 
     if (!geminiResponse.ok) {
       console.error("Erro na API do Gemini:", geminiData);
@@ -119,22 +128,22 @@ app.post("/analyze", async (req, res) => {
       );
     }
 
-    // Adicione estes logs:
-    console.log("Status Gemini:", geminiResponse.status);
-    console.log("Candidates:", JSON.stringify(geminiData.candidates, null, 2));
     console.log(
-      "Analysis text:",
-      geminiData.candidates?.[0]?.content?.parts?.[0]?.text,
+      "9. Candidates:",
+      JSON.stringify(geminiData.candidates, null, 2),
     );
 
-    console.log("=== RESPOSTA COMPLETA DO GEMINI ===");
-    console.log(JSON.stringify(geminiData, null, 2));
-    console.log("=== FIM DA RESPOSTA ===");
-
     const analysisText = geminiData.candidates[0].content.parts[0].text;
+    console.log("10. Analysis text:", analysisText);
+
+    // Correção: res.json() que estava faltando
+    res.json({
+      analysis: analysisText,
+      screenshot_url: `data:${mimeType};base64,${base64Image}`,
+    });
   } catch (error) {
     if (browser) await browser.close();
-    console.error("Erro no backend:", error);
+    console.error("ERRO:", error);
     res
       .status(500)
       .json({ error: `Ocorreu um erro no backend: ${error.message}` });
