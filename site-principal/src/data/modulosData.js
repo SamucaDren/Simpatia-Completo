@@ -28,7 +28,7 @@ const MODULOS_DATA = {
     {
       titulo: "Ajuda AI",
       descricao: "Crie e acompanhe provas e notas.",
-      link: "/simpatico",
+      link: "/ajuda-ai",
       id: "a1",
     },
     {
@@ -43,7 +43,12 @@ const MODULOS_DATA = {
       link: "/gerador-de-plano",
       id: "a3",
     },
-    { titulo: "Simpático", descricao: "Estude com IA", id: "a4" },
+    {
+      titulo: "Simpático",
+      descricao: "Estude com IA",
+      ink: "/simpatico",
+      id: "a4",
+    },
     {
       titulo: "Gerador Questões",
       descricao: "Treine com IA",
