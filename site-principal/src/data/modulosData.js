@@ -15,7 +15,7 @@ const MODULOS_DATA = {
     {
       titulo: "Acessibilidade Checker",
       descricao: "Avalie rapidamente a acessibilidade de páginas web.",
-      link: "https://unifenas.br",
+      link: "/acessibilidade-checker",
       id: "p3",
     },
     {
