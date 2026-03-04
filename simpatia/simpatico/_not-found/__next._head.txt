@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[57172,["/_next/static/chunks/3e1d9ca46518d5ef.js"],"ViewportBoundary"]
+3:I[57172,["/_next/static/chunks/3e1d9ca46518d5ef.js"],"MetadataBoundary"]
+4:"$Sreact.suspense"
+5:I[80942,["/_next/static/chunks/3e1d9ca46518d5ef.js"],"IconMark"]
+0:{"buildId":"iRIdE2aGfGWQKQZ9782f0","rsc":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L2",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L3",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"SIMPATICO IA"}],["$","meta","1",{"name":"description","content":"Plataforma de Tutoria Inteligente para Estudantes Universitários"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","link","3",{"rel":"icon","href":"https://scjmnsuidsjcnerccxhe.supabase.co/storage/v1/object/public/images/public/2hwlg68xd6b.png"}],["$","$L5","4",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"loading":null,"isPartial":false}
