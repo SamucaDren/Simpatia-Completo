@@ -42,16 +42,29 @@ const TopBar = () => {
     };
   }, [menuOpen]);
 
-
   return (
     <div className={styles.topbar}>
-      <img src={Logo} alt="Logo" className={styles.logo} onClick={() => window.open("https://simpatiaunifenas.web.app", "_blank")} />
+      <img
+        src={Logo}
+        alt="Logo"
+        className={styles.logo}
+        onClick={() => window.open("/", "_blank")}
+      />
 
       {!isMobile && (
         <div className={styles.nav}>
           <ModuleIA />
-          <Button types="outline" onClick={() => window.open("https://simpatiaunifenas.web.app/about", "_blank")} >Sobre o Projeto</Button>
-          <Button types="top" onClick={() => window.open("https://www.unifenas.br/", "_blank")} className={styles.btn}>
+          <Button
+            types="outline"
+            onClick={() => window.open("/about", "_blank")}
+          >
+            Sobre o Projeto
+          </Button>
+          <Button
+            types="top"
+            onClick={() => window.open("https://www.unifenas.br/", "_blank")}
+            className={styles.btn}
+          >
             <img
               src={Unifenas}
               alt="Unifenas"
@@ -79,10 +92,18 @@ const TopBar = () => {
       {menuOpen && isMobile && (
         <div ref={dropdownRef} className={styles.dropdown}>
           <ModuleIA />
-          <Button types="outline" className={styles.btnTop} onClick={() => window.open("https://simpatiaunifenas.web.app/about", "_blank")}>
+          <Button
+            types="outline"
+            className={styles.btnTop}
+            onClick={() => window.open("/about", "_blank")}
+          >
             Sobre o Projeto
           </Button>
-          <Button types="top" className={styles.btn} onClick={() => window.open("https://www.unifenas.br/", "_blank")} >
+          <Button
+            types="top"
+            className={styles.btn}
+            onClick={() => window.open("https://www.unifenas.br/", "_blank")}
+          >
             <img
               src={Unifenas}
               alt="Unifenas"

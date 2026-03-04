@@ -1,10 +1,10 @@
 import axios from "axios";
+import { GEMINI_API_KEY } from "../config.js";
 
 export async function ChatMensagem(pergunta, specialties) {
   try {
-
     const data = `${JSON.stringify(
-      pergunta
+      pergunta,
     )} - RESPONDA SEMPRE MINHA ÚLTIMA PERGUNTA, PORÉM LEVE EM CONTA TODAS AS OUTRAS PERGUNTAS E RESPOSTA QUE EXISTEM NA LISTA. VOCÊ DEVE SER UM AGENTE DE IA TREINADO EM ${specialties}, NÃO PODE SAIR DO SEU TEMA. É EXTREMAMENTE PROIBIDO VOCÊ DAR A RESPOSTA PARA O ALUNO, VOCÊ DEVE EXPLICAR COMO O ALUNO CHEGA NO SEU OBJETIVO, SEJA CORTEZ.`;
 
     const response = await axios.post(
@@ -20,9 +20,9 @@ export async function ChatMensagem(pergunta, specialties) {
       {
         headers: {
           "Content-Type": "application/json",
-          "x-goog-api-key": process.env.REACT_APP_GEMINI_API_KEY,
+          "x-goog-api-key": GEMINI_API_KEY,
         },
-      }
+      },
     );
 
     if (
