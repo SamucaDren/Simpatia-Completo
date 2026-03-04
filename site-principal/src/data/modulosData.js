@@ -46,7 +46,7 @@ const MODULOS_DATA = {
     {
       titulo: "Simpático",
       descricao: "Estude com IA",
-      ink: "/simpatico",
+      link: "/simpatico",
       id: "a4",
     },
     {
